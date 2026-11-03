@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="store.css" />
+    <style>
+      .code {
+        padding: 28px 0;
+        color: #e6edf3;
+        font: 17px/1.75 ui-monospace, 'SF Mono', Menlo, monospace;
+        counter-reset: line;
+      }
+      .code div {
+        padding-left: 76px;
+        white-space: pre;
+        position: relative;
+      }
+      .code div::before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: 0;
+        width: 48px;
+        color: #484f58;
+        text-align: right;
+      }
+      .k { color: #ff7b72; }
+      .f { color: #d2a8ff; }
+      .s { color: #a5d6ff; }
+      .v { color: #ffa657; }
+    </style>
+  </head>
+  <body class="dark">
+    <header class="caption">
+      <h1>Works on code, docs and articles.</h1>
+      <p>Whole-word mode skips partial hits, so renderRows stays out of the way.</p>
+    </header>
+
+    <div class="window">
+      <div class="toolbar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url" data-url="example.com/acme/dashboard/blob/main/src/table.js"></div>
+        <div class="ext"><img src="../icons/icon-128.png" alt="" /><span class="badge" id="badge"></span></div>
+      </div>
+      <div class="code" id="code">
+<div><span class="k">import</span> { formatDate } <span class="k">from</span> <span class="s">'./format.js'</span>;</div>
+<div> </div>
+<div><span class="k">export function</span> <span class="f" id="target">renderRow</span>(<span class="v">item</span>) {</div>
+<div>  <span class="k">const</span> row = document.<span class="f">createElement</span>(<span class="s">'tr'</span>);</div>
+<div>  row.<span class="f">append</span>(<span class="f">cell</span>(item.name), <span class="f">cell</span>(<span class="f">formatDate</span>(item.updatedAt)));</div>
+<div>  <span class="k">return</span> row;</div>
+<div>}</div>
+<div> </div>
+<div><span class="k">export function</span> <span class="f">renderTable</span>(<span class="v">items</span>) {</div>
+<div>  <span class="k">const</span> table = document.<span class="f">createElement</span>(<span class="s">'table'</span>);</div>
+<div>  <span class="k">for</span> (<span class="k">const</span> item <span class="k">of</span> items) table.<span class="f">append</span>(<span class="f">renderRow</span>(item));</div>
+<div>  <span class="k">return</span> table;</div>
+<div>}</div>
+<div> </div>
+<div><span class="k">export const</span> <span class="f">renderRows</span> = (<span class="v">items</span>) <span class="k">=&gt;</span> items.<span class="f">map</span>(renderRow);</div>
+      </div>
+    </div>
+
+    <script>
+      window.STUB_SETTINGS = { color: '#d2a8ff', opacity: 0.35, wholeWord: true };
+    </script>
+    <script src="chrome-stub.js"></script>
+    <script src="../src/shared.js"></script>
+    <script src="../src/content.js"></script>
+    <script>
+      document.addEventListener('tsh-count', (event) => {
+        document.getElementById('badge').textContent = event.detail || '';
+      });
+      setTimeout(() => {
+        const text = document.getElementById('target').firstChild;
+        getSelection().setBaseAndExtent(text, 0, text, text.length);
+      }, 200);
+    </script>
+  </body>
+</html>

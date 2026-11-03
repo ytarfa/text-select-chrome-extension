@@ -28,6 +28,8 @@ src/content.js        Watches the selection and paints matches
 src/background.js     Toolbar badge and opening the settings page
 options/              Settings page
 icons/                icon.svg and the rendered PNGs
+store/                Chrome Web Store listing copy, screenshots and promo tile
+scripts/              Packaging and store asset rendering
 ```
 
 To regenerate the icons after editing `icons/icon.svg`:
@@ -35,3 +37,10 @@ To regenerate the icons after editing `icons/icon.svg`:
 ```sh
 cd icons && for s in 16 32 48 128; do rsvg-convert -w $s -h $s icon.svg -o icon-$s.png; done
 ```
+
+## Publishing
+
+- `scripts/package.sh` builds `dist/text-select-highlighter-<version>.zip` for upload.
+- `scripts/render-store-assets.sh` re-renders the store screenshots and promo tile with headless Chrome.
+- [`store/listing.md`](store/listing.md) has the listing text, permission justifications and privacy answers for the developer dashboard.
+- [`PRIVACY.md`](PRIVACY.md) is the privacy policy.

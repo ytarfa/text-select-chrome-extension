@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="store.css" />
+    <style>
+      .layout {
+        display: flex;
+        align-items: center;
+        gap: 72px;
+        height: 100%;
+        padding: 0 96px 0 120px;
+      }
+      .copy {
+        flex: 1;
+      }
+      .copy h1 {
+        margin: 0;
+        font-size: 44px;
+        font-weight: 650;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+      }
+      .copy ul {
+        margin: 28px 0 0;
+        padding: 0;
+        list-style: none;
+        color: #57575c;
+        font-size: 18px;
+        line-height: 2.1;
+      }
+      .copy li::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 14px;
+        border-radius: 50%;
+        background: #ff9bce;
+        vertical-align: 2px;
+      }
+      .frame {
+        flex: none;
+        width: 560px;
+        height: 760px;
+        overflow: hidden;
+        border-radius: 18px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 24px 60px rgba(0, 0, 0, 0.12);
+      }
+      /* The settings page laid out at 760px wide, scaled to fit the frame. */
+      .frame iframe {
+        width: 760px;
+        height: 1032px;
+        border: 0;
+        transform: scale(0.737);
+        transform-origin: 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="copy">
+        <h1>Make it yours.</h1>
+        <ul>
+          <li>Case-sensitive or not</li>
+          <li>Whole-word matching</li>
+          <li>Any colour and opacity</li>
+          <li>Fill or underline</li>
+          <li>Light and dark mode</li>
+        </ul>
+      </div>
+      <div class="frame">
+        <iframe
+          src="../options/options.html?settings=%7B%22color%22%3A%22%23ff9bce%22%2C%22opacity%22%3A0.4%7D"
+          title="Settings"
+        ></iframe>
+      </div>
+    </div>
+  </body>
+</html>

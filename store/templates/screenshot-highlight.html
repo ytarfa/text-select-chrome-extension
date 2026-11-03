@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="store.css" />
+    <style>
+      article {
+        padding: 40px 72px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 18px;
+        line-height: 1.75;
+        color: #2b2b2e;
+      }
+      article h2 {
+        margin: 0 0 14px;
+        font-size: 32px;
+        font-weight: 400;
+      }
+      article p {
+        margin: 0 0 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="caption">
+      <h1>Select text. See every match.</h1>
+      <p>Highlight every occurrence of your selection, on any page.</p>
+    </header>
+
+    <div class="window">
+      <div class="toolbar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url" data-url="example.com/coastal-history/lighthouses"></div>
+        <div class="ext"><img src="../icons/icon-128.png" alt="" /><span class="badge" id="badge"></span></div>
+      </div>
+      <article>
+        <h2>Lighthouses</h2>
+        <p id="first">
+          A lighthouse is a tower designed to emit light from a system of lamps and lenses, serving as a
+          navigational aid for pilots at sea. Lighthouses mark dangerous coastlines, hazardous shoals
+          and safe entries to harbours.
+        </p>
+        <p>
+          The Lighthouse of Alexandria, built in the third century BC, is the most famous early
+          lighthouse. Modern lighthouse keepers are rare: most lighthouses are now automated, though
+          a few lighthouse museums still welcome visitors every summer.
+        </p>
+        <p>
+          On a clear night, the beam of a large coastal light can be seen from more than forty
+          kilometres away.
+        </p>
+      </article>
+    </div>
+
+    <script src="chrome-stub.js"></script>
+    <script src="../src/shared.js"></script>
+    <script src="../src/content.js"></script>
+    <script>
+      document.addEventListener('tsh-count', (event) => {
+        document.getElementById('badge').textContent = event.detail || '';
+      });
+      setTimeout(() => {
+        const text = document.getElementById('first').firstChild;
+        const start = text.data.indexOf('lighthouse');
+        getSelection().setBaseAndExtent(text, start, text, start + 'lighthouse'.length);
+      }, 200);
+    </script>
+  </body>
+</html>

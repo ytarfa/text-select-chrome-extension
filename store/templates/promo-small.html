@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 440px;
+        height: 280px;
+        margin: 0;
+        padding: 0 40px;
+        overflow: hidden;
+        background: #1d1d1f;
+        color: #f2f2f3;
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+      h1 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+      }
+      p {
+        margin: 8px 0 0;
+        color: #a1a1a6;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+      mark {
+        padding: 0 2px;
+        border-radius: 3px;
+        background: rgba(255, 200, 61, 0.35);
+        color: #f2f2f3;
+      }
+      mark.selected {
+        background: #264f78;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../icons/icon-128.png" alt="" />
+    <h1>Text Select Highlighter</h1>
+    <p>Select a <mark class="selected">word</mark> and every other <mark>word</mark><br />on the page lights up.</p>
+  </body>
+</html>
