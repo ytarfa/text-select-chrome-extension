@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="store.css" />
+    <style>
+      body {
+        width: 1280px;
+        height: 560px;
+        background: #f5f5f3;
+      }
+      .layout {
+        display: flex;
+        align-items: center;
+        gap: 64px;
+        height: 100%;
+        padding: 0 72px 0 96px;
+      }
+      .intro {
+        flex: 1;
+      }
+      .intro img {
+        width: 72px;
+        height: 72px;
+        border-radius: 17px;
+      }
+      .dark .intro img {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+      }
+      .intro h1 {
+        margin: 26px 0 0;
+        font-size: 46px;
+        font-weight: 650;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+      .intro p {
+        margin: 14px 0 0;
+        color: #86868b;
+        font-size: 20px;
+        line-height: 1.45;
+      }
+      .pills {
+        display: flex;
+        gap: 8px;
+        margin-top: 28px;
+      }
+      .pills span {
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: #e8e8ea;
+        color: #57575c;
+        font-size: 13px;
+      }
+      .dark .pills span {
+        background: #232326;
+        color: #a1a1a6;
+      }
+      .window {
+        flex: none;
+        width: 560px;
+        height: 400px;
+        margin: 0;
+        border-radius: 14px;
+      }
+      article {
+        padding: 30px 40px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #2b2b2e;
+      }
+      .dark article {
+        color: #d8d8dc;
+      }
+      article h2 {
+        margin: 0 0 10px;
+        font-size: 26px;
+        font-weight: 400;
+      }
+      article p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="intro">
+        <img src="../icons/icon-128.png" alt="" />
+        <h1>Text Select<br />Highlighter</h1>
+        <p>Select text and every other match on the<br />page lights up, just like in a code editor.</p>
+        <div class="pills"><span>Chrome extension</span><span>Free</span><span>No tracking</span></div>
+      </div>
+      <div class="window">
+        <div class="toolbar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="url" data-url="example.com/oceans/tides"></div>
+          <div class="ext"><img src="../icons/icon-128.png" alt="" /><span class="badge" id="badge"></span></div>
+        </div>
+        <article>
+          <h2>Tides</h2>
+          <p id="first">
+            A tide is the rise and fall of sea levels caused by the Moon and the Sun. Most coasts
+            see two high tides and two low tides each day. Spring tides, the strongest of the month,
+            arrive near the new and full moon, while neap tides are gentler. Sailors still plan
+            around the tide tables printed in every harbour.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <script>
+      if (location.search.includes('dark')) document.body.classList.add('dark');
+    </script>
+    <script src="chrome-stub.js"></script>
+    <script src="../src/shared.js"></script>
+    <script src="../src/content.js"></script>
+    <script>
+      document.addEventListener('tsh-count', (event) => {
+        document.getElementById('badge').textContent = event.detail || '';
+      });
+      setTimeout(() => {
+        const text = document.getElementById('first').firstChild;
+        const start = text.data.indexOf('tide');
+        getSelection().setBaseAndExtent(text, start, text, start + 'tide'.length);
+      }, 200);
+    </script>
+  </body>
+</html>
