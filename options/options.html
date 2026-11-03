@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Text Select Highlighter · Settings</title>
+    <link rel="icon" href="../icons/icon-32.png" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <img class="logo" src="../icons/icon-128.png" alt="" width="40" height="40" />
+        <div class="title">
+          <h1>Text Select Highlighter</h1>
+          <p>Select text on any page to highlight every other match.</p>
+        </div>
+        <input type="checkbox" id="enabled" class="switch" role="switch" aria-label="Enable highlighting" />
+      </header>
+
+      <section class="preview" aria-label="Preview">
+        <p id="preview-text">
+          Select a <span id="preview-selection">word</span> and every other word on the page lights
+          up — Word, WORD, words and wordplay included, depending on your settings.
+        </p>
+        <span id="preview-count" class="preview-count"></span>
+      </section>
+
+      <div class="dimmable">
+        <section class="group">
+          <h2>Matching</h2>
+          <div class="card">
+            <label class="row" for="caseSensitive">
+              <span class="text">
+                <span class="label">Case sensitive</span>
+                <span class="hint">Treat “Word” and “word” as different.</span>
+              </span>
+              <input type="checkbox" id="caseSensitive" class="switch" role="switch" />
+            </label>
+            <label class="row" for="wholeWord">
+              <span class="text">
+                <span class="label">Whole words only</span>
+                <span class="hint">Don’t highlight “word” inside “wordplay”.</span>
+              </span>
+              <input type="checkbox" id="wholeWord" class="switch" role="switch" />
+            </label>
+            <div class="row">
+              <span class="text">
+                <span class="label" id="minLength-label">Minimum length</span>
+                <span class="hint">Ignore selections shorter than this.</span>
+              </span>
+              <div class="stepper" role="group" aria-labelledby="minLength-label">
+                <button type="button" data-step="-1" aria-label="Decrease">−</button>
+                <output id="minLength">2</output>
+                <button type="button" data-step="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2>Appearance</h2>
+          <div class="card">
+            <div class="row">
+              <span class="label" id="color-label">Colour</span>
+              <div class="swatches" id="swatches" role="radiogroup" aria-labelledby="color-label">
+                <label class="swatch custom" title="Custom colour">
+                  <input type="color" id="customColor" aria-label="Custom colour" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <label class="label" for="opacity">Opacity</label>
+              <div class="slider">
+                <input type="range" id="opacity" min="10" max="100" step="5" />
+                <output id="opacity-value" for="opacity"></output>
+              </div>
+            </div>
+            <div class="row">
+              <span class="label" id="style-label">Style</span>
+              <div class="segmented" role="radiogroup" aria-labelledby="style-label">
+                <label><input type="radio" name="style" value="fill" /><span>Fill</span></label>
+                <label><input type="radio" name="style" value="underline" /><span>Underline</span></label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2>Toolbar</h2>
+          <div class="card">
+            <label class="row" for="showCount">
+              <span class="text">
+                <span class="label">Show match count</span>
+                <span class="hint">Display the number of matches on the extension icon.</span>
+              </span>
+              <input type="checkbox" id="showCount" class="switch" role="switch" />
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <button type="button" id="reset" class="link">Reset to defaults</button>
+        <span id="status" class="status" role="status">Saved</span>
+      </footer>
+    </main>
+
+    <script src="../src/shared.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
